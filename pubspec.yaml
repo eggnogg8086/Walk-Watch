@@ -37,6 +37,7 @@ dependencies:
   dynamic_color: ^2.1.0
   google_maps_flutter: ^2.18.2
   geolocator: ^14.1.1
+  flutter_dotenv: ^6.0.1
 
 dev_dependencies:
   flutter_test:

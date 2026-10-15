@@ -1,3 +1,16 @@
+import java.util.Properties
+
+val keyProperties = Properties()
+val keyPropertiesFile = rootProject.file("key.properties")
+
+if (keyPropertiesFile.exists()) {
+    keyPropertiesFile.inputStream().use {
+        keyProperties.load(it)
+    }
+}
+
+val mapsKey = keyProperties.getProperty("MAPS_KEY") ?: ""
+
 plugins {
     id("com.android.application")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
@@ -23,6 +36,7 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        manifestPlaceholders["MAPS_KEY"] = mapsKey
     }
 
     buildTypes {
